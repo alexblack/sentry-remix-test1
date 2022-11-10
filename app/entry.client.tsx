@@ -26,7 +26,7 @@ if (window.requestIdleCallback) {
 }
 
 Sentry.init({
-  dsn: "tracesSampleRate",
+  dsn: "DSN_HERE",
   tracesSampleRate: 1,
   integrations: [
     new Sentry.BrowserTracing({
