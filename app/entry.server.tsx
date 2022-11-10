@@ -10,7 +10,7 @@ import * as Sentry from "@sentry/remix";
 const ABORT_DELAY = 5000;
 
 Sentry.init({
-  dsn: "https://96013034fa7d4fc4ad062f59d5bde4d0:bac6661eb22940a19b25e040f2cf57d2@o522466.ingest.sentry.io/4504136094842880",
+  dsn: "DSN_HERE",
   tracesSampleRate: 1,
 });
 
