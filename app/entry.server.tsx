@@ -6,12 +6,14 @@ import isbot from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
 
 import * as Sentry from "@sentry/remix";
+import { beforeSend } from "./lib/sentry";
 
 const ABORT_DELAY = 5000;
 
 Sentry.init({
   dsn: "DSN_HERE",
   tracesSampleRate: 1,
+  beforeSend
 });
 
 export default function handleRequest(

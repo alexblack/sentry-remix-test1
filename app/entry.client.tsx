@@ -5,6 +5,22 @@ import { hydrateRoot } from "react-dom/client";
 import { useLocation, useMatches } from "@remix-run/react";
 import * as Sentry from "@sentry/remix";
 import { useEffect } from "react";
+import { beforeSend } from "./lib/sentry";
+
+Sentry.init({
+  dsn: "DSN_HERE",
+  tracesSampleRate: 1,
+  beforeSend,
+  integrations: [
+    new Sentry.BrowserTracing({
+      routingInstrumentation: Sentry.remixRouterInstrumentation(
+        useEffect,
+        useLocation,
+        useMatches
+      ),
+    }),
+  ],
+});
 
 function hydrate() {
   startTransition(() => {
@@ -25,16 +41,3 @@ if (window.requestIdleCallback) {
   window.setTimeout(hydrate, 1);
 }
 
-Sentry.init({
-  dsn: "DSN_HERE",
-  tracesSampleRate: 1,
-  integrations: [
-    new Sentry.BrowserTracing({
-      routingInstrumentation: Sentry.remixRouterInstrumentation(
-        useEffect,
-        useLocation,
-        useMatches
-      ),
-    }),
-  ],
-});
