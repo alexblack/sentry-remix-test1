@@ -11,7 +11,8 @@ Sentry.init({
   dsn: "DSN_HERE",
   tracesSampleRate: 1,
   beforeSend,
-  integrations: [
+  sendDefaultPii: true,
+  integrations: [    
     new Sentry.BrowserTracing({
       routingInstrumentation: Sentry.remixRouterInstrumentation(
         useEffect,
