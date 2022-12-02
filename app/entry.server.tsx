@@ -12,7 +12,7 @@ import { beforeSend } from "./lib/sentry";
 const ABORT_DELAY = 5000;
 
 Sentry.init({
-  dsn: "DSN_HERE",
+  dsn: process.env.SENTRY_DSN,
   tracesSampleRate: 1,
   beforeSend,
   sendDefaultPii: true,
