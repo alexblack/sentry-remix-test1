@@ -4,7 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix build",
+    "build": "remix build --sourcemap && sentry-upload-sourcemaps --org syncwith --project webapp",
     "dev": "remix dev --manual",
     "start": "remix-serve ./build/index.js",
     "typecheck": "tsc"
@@ -14,6 +14,7 @@
     "@remix-run/node": "^2.3.0",
     "@remix-run/react": "^2.3.0",
     "@remix-run/serve": "^2.3.0",
+    "@sentry/remix": "^7.80.1",
     "isbot": "^3.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
